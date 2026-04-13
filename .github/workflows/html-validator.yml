@@ -1,0 +1,21 @@
+name: Validar HTML
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+
+jobs:
+  validar-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar htmlhint
+        run: npm install -g htmlhint
+
+      - name: Validar HTML
+        run: htmlhint *.html
